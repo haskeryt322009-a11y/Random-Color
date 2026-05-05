@@ -1,0 +1,39 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background-color: rgb(191, 237, 243);
+  width: 500px;
+  height: 500px;
+  gap: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container .container__box {
+  width: 300px;
+  height: 300px;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: white;
+}
+.container .container__button {
+  border-radius: 10px;
+  width: 150px;
+  height: 60px;
+  background-color: rgb(255, 0, 0);
+  font-weight: 900;
+}
