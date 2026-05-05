@@ -22,12 +22,12 @@ if (background instanceof HTMLDivElement &&
         const mode = select.value;
         if (mode === "rgb") {
             background.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-            id.textContent = `RGB: ${r}, ${g}, ${b}`;
+            id.textContent = `${r}, ${g}, ${b}`;
         }
         else {
             const hex = rgbToHex(r, g, b);
             background.style.backgroundColor = hex;
-            id.textContent = `HEX: ${hex}`;
+            id.textContent = `${hex}`;
         }
     };
     button.addEventListener("click", () => {
