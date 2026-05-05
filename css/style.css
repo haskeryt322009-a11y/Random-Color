@@ -10,30 +10,57 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #cfe4e5;
 }
 
-.container {
-  background-color: rgb(191, 237, 243);
+.main {
+  background-color: white;
   width: 500px;
   height: 500px;
   gap: 20px;
-  border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.container .container__box {
+.main .main__color {
   width: 300px;
   height: 300px;
   border: 2px solid black;
-  border-radius: 10px;
   background-color: white;
 }
-.container .container__button {
-  border-radius: 10px;
-  width: 150px;
+.main .container {
+  gap: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.main .container .container__box {
+  height: 5ch;
+  width: 200px;
+  background-color: #eeeeee;
+  color: #a0aeaf;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.main .container .container__box .color-select {
+  height: 45px;
+}
+.main .container .container__box .color-select__result {
   height: 60px;
-  background-color: rgb(255, 0, 0);
-  font-weight: 900;
+  width: 150px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: rgb(90, 90, 90);
+}
+.main .container .container__button {
+  width: 90px;
+  height: 60px;
+  background-color: white;
+  font-weight: 600;
 }

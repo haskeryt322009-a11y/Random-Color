@@ -4,14 +4,32 @@ const getRandomColor = () => {
     const b = Math.floor(Math.random() * 255);
     return [r, g, b];
 };
-const background = document.querySelector(".container__box");
+const background = document.querySelector(".main__color");
 const button = document.querySelector(".container__button");
-const showRandomColor = () => {
-    let randomColor = getRandomColor();
-    console.log(randomColor);
-    background.style.backgroundColor = `rgb(${randomColor[0]}, ${randomColor[1]}, ${randomColor[2]})`;
+const id = document.querySelector(".color-select__result");
+const select = document.querySelector(".color-select");
+const rgbToHex = (r, g, b) => {
+    return "#" + [r, g, b]
+        .map(x => x.toString(16).padStart(2, "0"))
+        .join("");
 };
-if (background instanceof HTMLDivElement && button instanceof HTMLButtonElement) {
+if (background instanceof HTMLDivElement &&
+    button instanceof HTMLButtonElement &&
+    id instanceof HTMLDivElement &&
+    select instanceof HTMLSelectElement) {
+    const showRandomColor = () => {
+        const [r, g, b] = getRandomColor();
+        const mode = select.value;
+        if (mode === "rgb") {
+            background.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+            id.textContent = `RGB: ${r}, ${g}, ${b}`;
+        }
+        else {
+            const hex = rgbToHex(r, g, b);
+            background.style.backgroundColor = hex;
+            id.textContent = `HEX: ${hex}`;
+        }
+    };
     button.addEventListener("click", () => {
         showRandomColor();
     });
