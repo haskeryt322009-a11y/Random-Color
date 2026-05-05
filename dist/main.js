@@ -11,8 +11,10 @@ const showRandomColor = () => {
     console.log(randomColor);
     background.style.backgroundColor = `rgb(${randomColor[0]}, ${randomColor[1]}, ${randomColor[2]})`;
 };
-button.addEventListener("click", () => {
-    showRandomColor();
-});
+if (background instanceof HTMLDivElement && button instanceof HTMLButtonElement) {
+    button.addEventListener("click", () => {
+        showRandomColor();
+    });
+}
 export {};
 //# sourceMappingURL=main.js.map

@@ -10,20 +10,20 @@ const getRandomColor = (): ColorRGB => {
 }
 
 
-const background = document.querySelector(".container__box") as HTMLDivElement;
-const button = document.querySelector(".container__button") as HTMLButtonElement;
+const background = document.querySelector(".container__box");
+const button = document.querySelector(".container__button");
 
 
-const showRandomColor = () => {
+const showRandomColor = (): void => {
     let randomColor = getRandomColor();
     console.log(randomColor);
         background.style.backgroundColor = `rgb(${randomColor[0]}, ${randomColor[1]}, ${randomColor[2]})`;
 
 };
-
+if (background instanceof HTMLDivElement && button instanceof HTMLButtonElement){
 button.addEventListener("click", (): void => {
     showRandomColor();
 
 });
-
+}
 
