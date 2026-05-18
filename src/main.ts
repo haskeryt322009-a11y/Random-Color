@@ -1,6 +1,8 @@
 
 type ColorRGB = [red: number, green: number, blue: number]
 
+let currentColor: ColorRGB = [0, 0, 0];
+
 const getRandomColor = (): ColorRGB => {
     const r = Math.floor(Math.random() * 255);
     const g = Math.floor(Math.random() * 255);
@@ -11,7 +13,7 @@ const getRandomColor = (): ColorRGB => {
 
 const background = document.querySelector(".main__color") as HTMLDivElement;
 const button = document.querySelector(".container__button") as HTMLButtonElement;
-const id = document.querySelector(".color-select__result") as HTMLDivElement;
+const result = document.querySelector(".color-select__result") as HTMLDivElement;
 const select = document.querySelector(".color-select") as HTMLSelectElement;
 
 const rgbToHex = (r: number, g: number, b: number): string => {
@@ -21,28 +23,27 @@ const rgbToHex = (r: number, g: number, b: number): string => {
 };
 
 
-if (
-    background instanceof HTMLDivElement &&
-    button instanceof HTMLButtonElement &&
-    id instanceof HTMLDivElement &&
-    select instanceof HTMLSelectElement
-) {
-    const showRandomColor = (): void => {
-        const [r, g, b] = getRandomColor();
-        const mode = select.value;
-        
-        if (mode === "rgb") {
-            background.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-            id.textContent = `${r}, ${g}, ${b}`;
-        }
-        else {
-            const hex = rgbToHex(r, g, b);
-            background.style.backgroundColor = hex;
-            id.textContent = `${hex}`;
-        }
-    };
+const renderColor = (): void => {
+    const [r, g, b] = currentColor;
 
-        button.addEventListener("click", (): void => {
-            showRandomColor();
-        });}
+    const rgb = `rgb(${r}, ${g}, ${b})`;
+    const hex = rgbToHex(r, g, b);
 
+    background.style.backgroundColor = rgb;
+
+    if (select.value === "rgb") {
+        result.textContent = rgb;
+    } else {
+        result.textContent = hex;
+    }
+};
+
+const showRandomColor = (): void => {
+    currentColor = getRandomColor();
+    renderColor();
+};
+
+button.addEventListener("click", showRandomColor);
+select.addEventListener("change", renderColor);
+
+renderColor();
